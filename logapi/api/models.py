@@ -24,7 +24,7 @@ class Brand(models.Model):
     br_id=models.IntegerField(primary_key=True)
     br_name=models.CharField(max_length=100)
     status = models.BooleanField(default=True,choices = default_status_choice)
-
+ 
 class Products(models.Model):
     pr_id=models.IntegerField(primary_key=True)
     pr_name=models.CharField(max_length=100)
