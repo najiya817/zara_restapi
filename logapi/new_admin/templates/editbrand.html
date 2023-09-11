@@ -1,0 +1,9 @@
+{% extends 'sidebar.html' %}
+{% block nav %}
+<form action="" method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button type="submit" class="btn btn-success">ADD</button>
+  </form>
+
+{% endblock nav %}  

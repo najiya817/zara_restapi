@@ -17,12 +17,12 @@ class Customers(models.Model):
 
 class Category(models.Model):
     ct_id=models.IntegerField(primary_key=True)
-    ct_name=models.CharField(max_length=100)
+    ct_name=models.CharField(max_length=100,unique=True)
     status = models.BooleanField(default=True,choices = default_status_choice)
 
 class Brand(models.Model):
     br_id=models.IntegerField(primary_key=True)
-    br_name=models.CharField(max_length=100)
+    br_name=models.CharField(max_length=100,unique=True)
     status = models.BooleanField(default=True,choices = default_status_choice)
  
 class Products(models.Model):

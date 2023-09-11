@@ -1,7 +1,5 @@
-
 {% extends 'sidebar.html' %}
 {% block nav %}
-
 {% if messages %}
 {% for i in messages %}
     {% if i.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
@@ -24,22 +22,22 @@
     </div>
     <div class="row">
       <div class="col-9">
-      <h3 style="text-align: center;">CATEGORIES</h3>
+      <h3 style="text-align: center;">BRANDS</h3>
       <table  class="table table-primary jumbotron">
 
         <tr>
-          <th>id</th>
-          <th>name</th>
-          <th>status</th>
+          <th>Brand id</th>
+          <th>Brand Name</th>
+          <th>Status</th>
           <th></th>
         </tr>
         {% for i in data %}
 
         <tr>
-          <td>{{i.ct_id}}</td>
-          <td>{{i.ct_name}}</td>
+          <td>{{i.br_id}}</td>
+          <td>{{i.br_name}}</td>
           <td>{{i.status}}</td>
-          <td><a href="{% url 'edit' i.ct_id %}"><button class="btn btn-sm btn-warning">Edit</button></a></td>
+          <td><a href="{% url 'ebnd' i.br_id%}"><button class="btn btn-sm btn-warning">Edit</button></a></td>
         </tr>
         {% endfor %}
       </table>
@@ -48,7 +46,7 @@
       <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
         <span class="material-symbols-outlined">
           list_alt_add
-          </span> Add More Categories
+          </span> Add More Brands
       </button>
       
       <div class="collapse" id="collapseExample">
@@ -61,5 +59,3 @@
 </div>
 </div>
     {% endblock nav %} 
-  </body>
-</html>
