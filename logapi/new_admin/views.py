@@ -25,7 +25,7 @@ def login_view(request):
             print(user)
             if user is not None:
                 # login(request,user)
-                return render(request,"home.html")
+                return render(request,"index.html")
             else:
                 return redirect('logi')
         except:
