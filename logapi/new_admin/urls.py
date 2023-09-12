@@ -9,5 +9,9 @@ urlpatterns = [
     path('lhome/',LandHome,name='h'),
     path('catgry/',CategoryView.as_view(),name='catg'),
     path('bnd/',BrandView.as_view(),name='bnd'),
-    path('ebnd/<int:pk>',EditBrand.as_view(),name='ebnd')
+    path('ebnd/<int:pk>',EditBrand.as_view(),name='ebnd'),
+    path('pro/',ProductView.as_view(),name='pro'),
+    path('addpro/',AddProducts.as_view(),name='addpro'),
+    path('editpro/<int:pk>',EditProducts.as_view(),name='editpro'),
+    
 ]

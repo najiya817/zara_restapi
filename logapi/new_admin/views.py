@@ -1,8 +1,9 @@
+from typing import Any
 from django.forms.models import BaseModelForm
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from .models import *
-from django.views.generic import View,CreateView,UpdateView
+from django.views.generic import View,CreateView,UpdateView,TemplateView
 from django.contrib.auth import login
 from django.views.decorators.csrf import csrf_exempt
 from api.models import *
@@ -57,7 +58,6 @@ class CategoryView(CreateView):
         def get_context_data(self, **kwargs):
             context=super().get_context_data(**kwargs)
             context["data"]=Category.objects.all()
-            print(context["data"])
             return context
 
 class EditCategory(UpdateView):
@@ -83,7 +83,6 @@ class BrandView(CreateView):
     def get_context_data(self, **kwargs):
         context=super().get_context_data(**kwargs)
         context["data"]=Brand.objects.all()
-        print(context["data"])
         return context
 
 class EditBrand(UpdateView):
@@ -96,3 +95,33 @@ class EditBrand(UpdateView):
         self.object=form.save()
         messages.success(self.request,"brand edited successfully")
         return super().form_valid(form)
+
+class ProductView(TemplateView):
+    template_name="products.html"
+    def get_context_data(self, **kwargs):
+        context=super().get_context_data(**kwargs)
+        context["data"]=Products.objects.all()
+        return context
+
+class AddProducts(CreateView):
+    model=Products
+    form_class=ProductForm
+    template_name="addproducts.html"
+    success_url=reverse_lazy('pro')
+    def form_valid(self, form):
+        self.object=form.save()
+        messages.success(self.request,"product added succesfully")
+        return super().form_valid(form)
+    
+    
+class EditProducts(UpdateView):
+    model=Products
+    form_class=ProductForm
+    template_name="editproducts.html"
+    success_url=reverse_lazy('pro')
+    pk_url_kwarg='pk'
+    def form_valid(self, form):
+        self.object=form.save()
+        messages.success(self.request,"product updated succesfully")
+        return super().form_valid(form)
+    

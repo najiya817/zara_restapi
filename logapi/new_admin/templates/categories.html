@@ -20,46 +20,39 @@
 {%endif%}
 
 
-    <div>
-    </div>
-    <div class="row">
-      <div class="col-9">
-      <h3 style="text-align: center;">CATEGORIES</h3>
-      <table  class="table table-primary jumbotron">
-
-        <tr>
-          <th>id</th>
-          <th>name</th>
-          <th>status</th>
-          <th></th>
-        </tr>
-        {% for i in data %}
-
-        <tr>
-          <td>{{i.ct_id}}</td>
-          <td>{{i.ct_name}}</td>
-          <td>{{i.status}}</td>
-          <td><a href="{% url 'edit' i.ct_id %}"><button class="btn btn-sm btn-warning">Edit</button></a></td>
-        </tr>
-        {% endfor %}
-      </table>
-    </div>
-    <div class="col-3" style="padding-top: 50px;">      
-      <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-        <span class="material-symbols-outlined">
-          list_alt_add
-          </span> Add More Categories
-      </button>
-      
-      <div class="collapse" id="collapseExample">
+<div class="row">
+  <div class="col-9">
+    <h3 style="text-align: center;">CATEGORIES</h3>
+    <table  class="table table-light jumbotron">
+      <tr>
+        <th>id</th>
+        <th>name</th>
+        <th>status</th>
+        <th></th>
+      </tr>
+      {% for i in data %}
+      <tr>
+        <td>{{i.ct_id}}</td>
+        <td>{{i.ct_name}}</td>
+        <td>{{i.status}}</td>
+        <td><a href="{% url 'edit' i.ct_id %}"><button class="btn btn-sm btn-warning">Edit</button></a></td>
+      </tr>
+      {% endfor %}
+    </table>
+  </div>
+  <div class="col-3" style="padding-top: 50px;">      
+    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+      <span class="material-symbols-outlined">
+        list_alt_add
+      </span> Add More Categories
+    </button>
+    <div class="collapse" id="collapseExample">
       <form action="" method="post">
         {% csrf_token %}
         {{form.as_p}}
         <button type="submit" class="btn btn-success">ADD</button>
       </form>
     </div>
+  </div>
 </div>
-</div>
-    {% endblock nav %} 
-  </body>
-</html>
+{% endblock nav %} 

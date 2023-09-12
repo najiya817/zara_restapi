@@ -1,0 +1,15 @@
+{% extends 'sidebar.html' %}
+{% block nav %}
+<div class="row">
+    <div class="col-1"></div>
+    <div  class="col-10 jumbotron mt-2">
+        <h2 style="text-align: center;">EDIT PRODUCT</h2>
+        <form action="" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{form.as_p}}
+            <button type="submit" class="btn btn-warning">Update</button>
+        </form>
+    </div>
+    <div class="col-1"></div>
+</div>
+{% endblock nav %}  

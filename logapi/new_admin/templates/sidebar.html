@@ -20,7 +20,7 @@
         .sidebar1 {
     background: #5691ff;
     padding: 0px;
-    height: 800px;
+    height: 1000px;
 }
 .logo {
     max-height: 130px;
@@ -70,7 +70,7 @@ text-align:center;
                             <hr class="sidebar-divider my-0">
                             <li><a href="{% url 'bnd' %}">Brand</a></li>
                             <hr class="sidebar-divider my-0">
-                            <li><a href="home.html">Products</a></li>
+                            <li><a href="{% url 'pro' %}">Products</a></li>
                             <hr class="sidebar-divider my-0">
                             <li><a href="home.html">Banner</a></li>
                         </ul>
@@ -82,12 +82,11 @@ text-align:center;
                         
                     </div>
                 </div>
-                <div class="col-8">
+                <div class="col-10">
                     {% block nav %}
                     {% endblock nav %}  
 
                 </div>
-                <div class="col-2"></div>
         </div>
   
   </body>
