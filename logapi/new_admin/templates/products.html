@@ -46,7 +46,9 @@
         <td>{{i.stock}}</td>
         <td>{{i.price}}</td>
         <td>
-          <img src="{{i.imagesURL}}" alt="">
+          <!-- {% if i.images.url %} -->
+          <img src="{{i.images}}" alt="">
+          <!-- {% endif %} -->
         </td>
         <td>{{i.status}}</td>
         <td><a href="{% url 'editpro' i.pr_id %}"><button class="btn btn-sm btn-warning">Edit</button></a></td>
