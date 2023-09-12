@@ -13,5 +13,6 @@ urlpatterns = [
     path('pro/',ProductView.as_view(),name='pro'),
     path('addpro/',AddProducts.as_view(),name='addpro'),
     path('editpro/<int:pk>',EditProducts.as_view(),name='editpro'),
-    
+    path('ban',BannerView.as_view(),name='ban'),
+    path('eban/<int:pk>',EditBanner.as_view(),name='eban'),
 ]

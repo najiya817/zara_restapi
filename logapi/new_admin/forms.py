@@ -43,3 +43,12 @@ class ProductForm(forms.ModelForm):
             "images":forms.FileInput(),
             "status":forms.Select(attrs={"class":"form-control","placeholder":"Product status"}),
             }
+        
+class BannerForm(forms.ModelForm):
+    class Meta:
+        model=Banner
+        fields="__all__"
+        widgets={
+            "bn_id":forms.NumberInput(),
+            "photo":forms.FileInput()
+        }

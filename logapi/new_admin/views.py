@@ -125,3 +125,28 @@ class EditProducts(UpdateView):
         messages.success(self.request,"product updated succesfully")
         return super().form_valid(form)
     
+class BannerView(CreateView):
+        model=Banner
+        form_class=BannerForm
+        template_name="banner.html"
+        success_url=reverse_lazy('ban')
+        def form_valid(self, form):
+            form.instance.user=self.request.user
+            self.object=form.save()
+            messages.success(self.request,"banner added ")
+            return super().form_valid(form)
+        def get_context_data(self, **kwargs):
+            context=super().get_context_data(**kwargs)
+            context["data"]=Banner.objects.all()
+            return context
+
+class EditBanner(UpdateView):
+    model=Banner
+    form_class=BannerForm
+    template_name="editbanner.html"
+    success_url=reverse_lazy('ban')
+    pk_url_kwarg='pk'
+    def form_valid(self, form):
+        self.object=form.save()
+        messages.success(self.request,"banner updated succesfully")
+        return super().form_valid(form)

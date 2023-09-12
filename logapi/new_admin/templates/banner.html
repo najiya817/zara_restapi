@@ -1,0 +1,56 @@
+
+{% extends 'sidebar.html' %}
+{% block nav %}
+
+{% if messages %}
+{% for i in messages %}
+    {% if i.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+    <DIV class="alert alert-success alert-dismissable">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+      {{i}}
+    </DIV>
+    {% endif %}
+    {% if i.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+    <DIV class="alert alert-danger alert-dismissable">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+      {{i}}
+    </DIV>
+    {%endif%}
+{%endfor%}
+{%endif%}
+
+
+<div class="row">
+  <div class="col-9">
+    <h3 style="text-align: center;">BANNER</h3>
+    <table  class="table table-light jumbotron">
+      <tr>
+        <th>id</th>
+        <th>photo</th>
+        <th></th>
+      </tr>
+      {% for i in data %}
+      <tr>
+        <td>{{i.bn_id}}</td>
+        <td>{{i.photo}}</td>
+        <td><a href="{% url 'eban' i.bn_id %}"><button class="btn btn-sm btn-warning">Edit</button></a></td>
+      </tr>
+      {% endfor %}
+    </table>
+  </div>
+  <div class="col-3" style="padding-top: 50px;">      
+    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+      <span class="material-symbols-outlined">
+        list_alt_add
+      </span> Add More Banners
+    </button>
+    <div class="collapse" id="collapseExample">
+      <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button type="submit" class="btn btn-success">ADD</button>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock nav %} 
