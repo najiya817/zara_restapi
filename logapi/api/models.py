@@ -34,13 +34,6 @@ class Products(models.Model):
     price=models.IntegerField()
     images=models.ImageField(upload_to="product_images")
     status = models.BooleanField(default=True,choices = default_status_choice)
-    @property
-    def imageURL(self):
-        try:
-            url = self.images.url
-        except:
-            url = ''
-        return url
 
 
 class Banner(models.Model):

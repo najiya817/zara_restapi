@@ -27,6 +27,7 @@ router=DefaultRouter()
 router.register('prod',ProductModelView,basename="pro")
 router.register('brnd',BrandModelView,basename="bnd")
 router.register('cat',categoryModelView,basename="catgory")
+router.register('ban',BannerModelView,basename="bnr")
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -40,6 +41,5 @@ urlpatterns = [
     path('reg/',Registr),
     path('ver/',verify),
     path('',include('new_admin.urls')),
-]+router.urls
-urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_URL)
-urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_URL)
+]+router.urls+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

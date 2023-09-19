@@ -76,7 +76,8 @@ class BrandView(CreateView):
     form_class=BrandForm
     template_name="brands.html"
     success_url=reverse_lazy('bnd')
-    def form_valid(self, form):
+    def form_valid(self, form):           
+        form.instance.user=self.request.user
         self.object=form.save()
         messages.success(self.request,"Brand added successfully")
         return super().form_valid(form)
@@ -109,10 +110,13 @@ class AddProducts(CreateView):
     template_name="addproducts.html"
     success_url=reverse_lazy('pro')
     def form_valid(self, form):
+        form.instance.user=self.request.user
+        uploaded_file = self.request.FILES.get('images')
+        print(uploaded_file)
         self.object=form.save()
         messages.success(self.request,"product added succesfully")
         return super().form_valid(form)
-    
+
     
 class EditProducts(UpdateView):
     model=Products
@@ -121,9 +125,11 @@ class EditProducts(UpdateView):
     success_url=reverse_lazy('pro')
     pk_url_kwarg='pk'
     def form_valid(self, form):
+        form.instance.user=self.request.user
         self.object=form.save()
         messages.success(self.request,"product updated succesfully")
         return super().form_valid(form)
+        
     
 class BannerView(CreateView):
         model=Banner
@@ -146,7 +152,8 @@ class EditBanner(UpdateView):
     template_name="editbanner.html"
     success_url=reverse_lazy('ban')
     pk_url_kwarg='pk'
-    def form_valid(self, form):
+    def form_valid(self, form):            
+        form.instance.user=self.request.user
         self.object=form.save()
         messages.success(self.request,"banner updated succesfully")
         return super().form_valid(form)
